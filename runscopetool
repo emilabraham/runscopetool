@@ -1,0 +1,15 @@
+#!/bin/bash
+# The runscope tool
+
+#Variables
+ACCESS_TOKEN=053e4c58-1f8c-48d8-8fb9-148a3638c81d
+CLIENT_ID=a21ebb4a-ee38-48d7-aead-44b2428f7f71
+CLIENT_SECRET=a04102ec-e163-4d34-86ee-dfe5477b2aaf
+
+#Retrieve ths list of buckets along with their ID's and write to output.js
+#The pipe to python prettifies the output
+curl -H "Authorization:Bearer $ACCESS_TOKEN" https://api.runscope.com/buckets \
+| python -mjson.tool > output.json
+
+#Get all bucket names.
+jq '.data | .[].name' output.json
