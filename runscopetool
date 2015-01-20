@@ -13,3 +13,14 @@ curl -H "Authorization:Bearer $ACCESS_TOKEN" https://api.runscope.com/buckets \
 
 #Get all bucket names.
 jq '.data | .[].name' output.json
+
+ARRAY=(1 2 3)
+echo ${ARRAY[1]}
+ARRAY[6]=12
+echo ${ARRAY[5]}
+echo ${ARRAY[6]}
+echo ${ARRAY[*]}
+
+for bucket in jq '.data | .[].name' output.json; do
+  echo item: $bucket
+done
