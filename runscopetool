@@ -1,5 +1,4 @@
-#!/bin/bash
-# The runscope tool
+#!/bin/bash # The runscope tool
 
 #Variables
 ACCESS_TOKEN=053e4c58-1f8c-48d8-8fb9-148a3638c81d
@@ -15,18 +14,24 @@ IFS=$'\n' #This sets the internal field separator to newline so buckets can be
           #properly stored
 #Store all bucket names in an array
 BUCKETS=( "$(jq '.data | .[].name' output.json)" )
-
 #Add exit option for bucket selection menu
-EXIT='\nExit'
-BUCKETS+=$EXIT
+#BUCKETS+=("Exit")
+
+
+#Print array
+for ((i = 0;i < ${#BUCKETS[@]}; i++))
+do
+  echo ${BUCKETS[$i]}
+done
 
 #Create bucket selection menu
+PS3="Your choice: " #This changes the select prompt
 select BUCKET in $BUCKETS; 
 do 
   case $BUCKET in
-    "$EXIT")
+    "Exit")
       echo "Exiting..."
       break;;
   esac
-  echo "Your choice: $BUCKET"
+  echo "You picked: $BUCKET"
 done
