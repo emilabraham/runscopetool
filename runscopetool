@@ -11,16 +11,22 @@ CLIENT_SECRET=a04102ec-e163-4d34-86ee-dfe5477b2aaf
 curl -H "Authorization:Bearer $ACCESS_TOKEN" https://api.runscope.com/buckets \
 | python -mjson.tool > output.json
 
-#Get all bucket names.
-jq '.data | .[].name' output.json
+IFS=$'\n' #This sets the internal field separator to newline so buckets can be
+          #properly stored
+#Store all bucket names in an array
+BUCKETS=( "$(jq '.data | .[].name' output.json)" )
 
-ARRAY=(1 2 3)
-echo ${ARRAY[1]}
-ARRAY[6]=12
-echo ${ARRAY[5]}
-echo ${ARRAY[6]}
-echo ${ARRAY[*]}
+#Add exit option for bucket selection menu
+EXIT='\nExit'
+BUCKETS+=$EXIT
 
-for bucket in jq '.data | .[].name' output.json; do
-  echo item: $bucket
+#Create bucket selection menu
+select BUCKET in $BUCKETS; 
+do 
+  case $BUCKET in
+    "$EXIT")
+      echo "Exiting..."
+      break;;
+  esac
+  echo "Your choice: $BUCKET"
 done
