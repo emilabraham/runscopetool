@@ -8,16 +8,14 @@ CLIENT_SECRET=a04102ec-e163-4d34-86ee-dfe5477b2aaf
 #Retrieve ths list of buckets along with their ID's and write to output.js
 #The pipe to python prettifies the output
 curl -H "Authorization:Bearer $ACCESS_TOKEN" https://api.runscope.com/buckets \
-| python -mjson.tool > output.json
+  | python -mjson.tool > output.json
 
-IFS=$'\n' #This sets the internal field separator to newline so buckets can be
-          #properly stored
-#Store all bucket names in an array
-BUCKETS=( "$(jq '.data | .[].name' output.json)" )
+BUCKETS=()
+while IFS= read -r entry; do
+  BUCKETS+=("$entry")
+done < <(jq '.data | .[].name' output.json)
 
-#Add exit option for bucket selection menu
-BUCKETS+=("Exit")
-
+BUCKETS+=(Exit)
 
 #Print array
 for ((i = 0;i < ${#BUCKETS[@]}; i++))
@@ -27,12 +25,15 @@ done
 
 #Create bucket selection menu
 PS3="Your choice: " #This changes the select prompt
-select BUCKET in $BUCKETS; 
-do 
+select BUCKET in "${BUCKETS[@]}"; do 
   case $BUCKET in
     "Exit")
       echo "Exiting..."
       break;;
+    *)
+      SELECTED_BUCKET=$BUCKET
+      break;;
   esac
-  echo "You picked: $BUCKET"
 done
+
+echo "You selected $SELECTED_BUCKET"
