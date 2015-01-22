@@ -14,8 +14,9 @@ IFS=$'\n' #This sets the internal field separator to newline so buckets can be
           #properly stored
 #Store all bucket names in an array
 BUCKETS=( "$(jq '.data | .[].name' output.json)" )
+
 #Add exit option for bucket selection menu
-#BUCKETS+=("Exit")
+BUCKETS+=("Exit")
 
 
 #Print array
