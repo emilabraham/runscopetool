@@ -1,30 +1,36 @@
-#!/bin/bash # The runscope tool
+#!/bin/bash 
+# The runscope tool
+# Developed by emilabraham
 
 #Variables
 ACCESS_TOKEN=053e4c58-1f8c-48d8-8fb9-148a3638c81d
 CLIENT_ID=a21ebb4a-ee38-48d7-aead-44b2428f7f71
 CLIENT_SECRET=a04102ec-e163-4d34-86ee-dfe5477b2aaf
 
-#Retrieve ths list of buckets along with their ID's and write to output.js
-#The pipe to python prettifies the output
+# Retrieve ths list of buckets along with their ID's and write to output.json
+# The pipe to python prettifies the output
 curl -H "Authorization:Bearer $ACCESS_TOKEN" https://api.runscope.com/buckets \
   | python -mjson.tool > output.json
 
+# Declare a buckets array
 BUCKETS=()
+
+# Fill array with output of jq which reads from output.json
 while IFS= read -r entry; do
   BUCKETS+=("$entry")
-done < <(jq '.data | .[].name' output.json)
+done < <(jq -r '.data | .[].name' output.json)
 
+#Add exit option to the array
 BUCKETS+=(Exit)
 
-#Print array
-for ((i = 0;i < ${#BUCKETS[@]}; i++))
-do
-  echo ${BUCKETS[$i]}
-done
+#Get the index of the first occurrence of given value in the given array
+getindex(){
+  echo "The first parameter is $1"
+}
+
+PS3="Your choice: " #This changes the select prompt
 
 #Create bucket selection menu
-PS3="Your choice: " #This changes the select prompt
 select BUCKET in "${BUCKETS[@]}"; do 
   case $BUCKET in
     "Exit")
@@ -32,8 +38,15 @@ select BUCKET in "${BUCKETS[@]}"; do
       break;;
     *)
       SELECTED_BUCKET=$BUCKET
+      #Insert getindex here
       break;;
   esac
 done
 
+#Use index to get bucket key.  
+
 echo "You selected $SELECTED_BUCKET"
+
+getindex $BUCKETS
+
+#(jq '.data | .[]' output.json) > output2.json

@@ -1,0 +1,160 @@
+[
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/0mef6ftoxu7y/collections",
+    "default": true,
+    "key": "0mef6ftoxu7y",
+    "messages_url": "https://api.runscope.com/buckets/0mef6ftoxu7y/stream",
+    "name": "Atom Prod APIs",
+    "team": {
+      "name": "Applause, Inc.",
+      "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+    },
+    "tests_url": "https://api.runscope.com/buckets/0mef6ftoxu7y/radar",
+    "verify_ssl": true
+  },
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/lsrlrielwxbt/collections",
+    "default": false,
+    "key": "lsrlrielwxbt",
+    "messages_url": "https://api.runscope.com/buckets/lsrlrielwxbt/stream",
+    "name": "Analytics Prod APIs",
+    "team": {
+      "name": "Applause, Inc.",
+      "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+    },
+    "tests_url": "https://api.runscope.com/buckets/lsrlrielwxbt/radar",
+    "verify_ssl": true
+  },
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/jyrasitfql1n/collections",
+    "default": false,
+    "key": "jyrasitfql1n",
+    "messages_url": "https://api.runscope.com/buckets/jyrasitfql1n/stream",
+    "name": "Analytics Staging APIs",
+    "team": {
+      "name": "Applause, Inc.",
+      "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+    },
+    "tests_url": "https://api.runscope.com/buckets/jyrasitfql1n/radar",
+    "verify_ssl": true
+  },
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/l1pihy1mbszk/collections",
+    "default": false,
+    "key": "l1pihy1mbszk",
+    "messages_url": "https://api.runscope.com/buckets/l1pihy1mbszk/stream",
+    "name": "Atom Staging APIs",
+    "team": {
+      "name": "Applause, Inc.",
+      "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+    },
+    "tests_url": "https://api.runscope.com/buckets/l1pihy1mbszk/radar",
+    "verify_ssl": true
+  },
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/j75338ueh4yr/collections",
+    "default": false,
+    "key": "j75338ueh4yr",
+    "messages_url": "https://api.runscope.com/buckets/j75338ueh4yr/stream",
+    "name": "AIS Prod APIs",
+    "team": {
+      "name": "Applause, Inc.",
+      "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+    },
+    "tests_url": "https://api.runscope.com/buckets/j75338ueh4yr/radar",
+    "verify_ssl": true
+  },
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/qe5s8hvez3n4/collections",
+    "default": false,
+    "key": "qe5s8hvez3n4",
+    "messages_url": "https://api.runscope.com/buckets/qe5s8hvez3n4/stream",
+    "name": "MobileAPI APIs",
+    "team": {
+      "name": "Applause, Inc.",
+      "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+    },
+    "tests_url": "https://api.runscope.com/buckets/qe5s8hvez3n4/radar",
+    "verify_ssl": true
+  },
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/gumshj04hykt/collections",
+    "default": false,
+    "key": "gumshj04hykt",
+    "messages_url": "https://api.runscope.com/buckets/gumshj04hykt/stream",
+    "name": "Testing Services Platform",
+    "team": {
+      "name": "Applause, Inc.",
+      "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+    },
+    "tests_url": "https://api.runscope.com/buckets/gumshj04hykt/radar",
+    "verify_ssl": true
+  },
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/vtcj6mdt81m7/collections",
+    "default": false,
+    "key": "vtcj6mdt81m7",
+    "messages_url": "https://api.runscope.com/buckets/vtcj6mdt81m7/stream",
+    "name": "DevOpsQ4M",
+    "team": {
+      "name": "Applause, Inc.",
+      "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+    },
+    "tests_url": "https://api.runscope.com/buckets/vtcj6mdt81m7/radar",
+    "verify_ssl": true
+  },
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/ik1yr0dcdunl/collections",
+    "default": false,
+    "key": "ik1yr0dcdunl",
+    "messages_url": "https://api.runscope.com/buckets/ik1yr0dcdunl/stream",
+    "name": "Atom Dev APIs",
+    "team": {
+      "name": "Applause, Inc.",
+      "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+    },
+    "tests_url": "https://api.runscope.com/buckets/ik1yr0dcdunl/radar",
+    "verify_ssl": true
+  },
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/luqpkc101xph/collections",
+    "default": false,
+    "key": "luqpkc101xph",
+    "messages_url": "https://api.runscope.com/buckets/luqpkc101xph/stream",
+    "name": "myTest Bucket",
+    "team": {
+      "name": "Applause, Inc.",
+      "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+    },
+    "tests_url": "https://api.runscope.com/buckets/luqpkc101xph/radar",
+    "verify_ssl": true
+  },
+  {
+    "auth_token": null,
+    "collections_url": "https://api.runscope.com/buckets/lpt4jqdeemz5/collections",
+    "default": true,
+    "key": "lpt4jqdeemz5",
+    "messages_url": "https://api.runscope.com/buckets/lpt4jqdeemz5/stream",
+    "name": "Warm Stove",
+    "team": {
+      "name": "Emil Abraham",
+      "uuid": "44407abf-c9ca-4dee-82f3-2ad2946ad459"
+    },
+    "tests_url": "https://api.runscope.com/buckets/lpt4jqdeemz5/radar",
+    "verify_ssl": true
+  }
+]
+null
+{
+  "status": "success"
+}
