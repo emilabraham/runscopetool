@@ -47,6 +47,35 @@ jq '.data | .['$index']' output.json > output2.json
 
 cat output2.json
 
-# The Bucket Key of selected Bucket.
+# The Bucket Key of selected Bucket
 # We need this for grabbing all the tests within that bucket
-key=$(jq '.data | .['$index'] | .key' output.json)
+key=$(jq -r '.data | .['$index'] | .key' output.json)
+
+echo "The bucket Key is: $key"
+
+# Get the list of tests in that bucket
+curl -H "Authorization:Bearer $access_token" https://api.runscope.com/buckets/$key/radar | python -mjson.tool > output3.json
+
+cat output3.json
+
+# Declare tests array
+tests=()
+
+# Fill array with output of jq. jq reads from output.json
+while IFS= read -r entry; do
+  tests+=("$entry")
+done < <(jq -r '.data | .[].name' output3.json)
+
+select test in "${tests[@]}"; do 
+  if [ $REPLY -eq 12 ];
+  then
+    echo "Exiting..."
+    break;
+  elif [ 1 -le $REPLY ] && [ $REPLY -le 11 ];
+  then
+    echo "You selected $test which is option $REPLY"
+    break;
+  else
+    echo "Incorrect Input: Select a number 1-12"
+  fi
+done
