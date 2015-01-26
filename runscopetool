@@ -23,11 +23,6 @@ done < <(jq -r '.data | .[].name' output.json)
 #Add exit option to the array
 BUCKETS+=(Exit)
 
-#Get the index of the first occurrence of given value in the given array
-getindex(){
-  echo "The first parameter is $1"
-}
-
 PS3="Your choice: " #This changes the select prompt
 
 #Create bucket selection menu
@@ -38,15 +33,13 @@ select BUCKET in "${BUCKETS[@]}"; do
       break;;
     *)
       SELECTED_BUCKET=$BUCKET
-      #Insert getindex here
       break;;
   esac
 done
 
-#Use index to get bucket key.  
+
 
 echo "You selected $SELECTED_BUCKET"
+INDEX=$REPLY-1
 
-getindex $BUCKETS
-
-#(jq '.data | .[]' output.json) > output2.json
+jq '.data | .['$INDEX']' output.json > output2.json
