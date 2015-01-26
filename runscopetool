@@ -3,59 +3,50 @@
 # Developed by emilabraham
 
 #Variables
-ACCESS_TOKEN=053e4c58-1f8c-48d8-8fb9-148a3638c81d
-CLIENT_ID=a21ebb4a-ee38-48d7-aead-44b2428f7f71
-CLIENT_SECRET=a04102ec-e163-4d34-86ee-dfe5477b2aaf
+access_token=053e4c58-1f8c-48d8-8fb9-148a3638c81d
+client_id=a21ebb4a-ee38-48d7-aead-44b2428f7f71
+client_secret=a04102ec-e163-4d34-86ee-dfe5477b2aaf
 
-# Retrieve ths list of buckets along with their ID's and write to output.json
+# Retrieve the list of buckets along with their ID's and write to output.json
 # The pipe to python prettifies the output
-curl -H "Authorization:Bearer $ACCESS_TOKEN" https://api.runscope.com/buckets \
+curl -H "Authorization:Bearer $access_token" https://api.runscope.com/buckets \
   | python -mjson.tool > output.json
 
 # Declare a buckets array
-BUCKETS=()
+buckets=()
 
-# Fill array with output of jq which reads from output.json
+# Fill array with output of jq. jq reads from output.json
 while IFS= read -r entry; do
-  BUCKETS+=("$entry")
+  buckets+=("$entry")
 done < <(jq -r '.data | .[].name' output.json)
 
-#Add exit option to the array
-BUCKETS+=(Exit)
+# Add exit option to the array
+buckets+=(Exit)
 
 PS3="Your choice: " #This changes the select prompt
 
-#Create bucket selection menu
-select BUCKET in "${BUCKETS[@]}"; do 
+# Create bucket selection menu
+select bucket in "${buckets[@]}"; do 
   if [ $REPLY -eq 12 ];
   then
     echo "Exiting..."
     break;
   elif [ 1 -le $REPLY ] && [ $REPLY -le 11 ];
   then
-    echo "You selected $BUCKET which is option $REPLY"
+    echo "You selected $bucket which is option $REPLY"
     break;
   else
     echo "Incorrect Input: Select a number 1-12"
   fi
-  #case $REPLY in
-  #  12)
-  #    echo "Exiting..."
-  #    break;;
-  #  (1<=$REPLY && $REPLY<=11))
-  #    echo "You selected $BUCKET"
-  #    break;;
-  #  *)
-  #    echo "Pick a number 1-12";;
-  #esac
 done
 
-INDEX=$REPLY-1
+# The index of the selected bucket
+index=$REPLY-1
 
-jq '.data | .['$INDEX']' output.json > output2.json
+jq '.data | .['$index']' output.json > output2.json
 
 cat output2.json
 
-KEY=jq '.data | .['$INDEX'] | .key' output.json
-
-echo "The Bucket Key is: $KEY"
+# The Bucket Key of selected Bucket.
+# We need this for grabbing all the tests within that bucket
+key=$(jq '.data | .['$index'] | .key' output.json)
