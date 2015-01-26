@@ -54,7 +54,8 @@ key=$(jq -r '.data | .['$index'] | .key' output.json)
 echo "The bucket Key is: $key"
 
 # Get the list of tests in that bucket
-curl -H "Authorization:Bearer $access_token" https://api.runscope.com/buckets/$key/radar | python -mjson.tool > output3.json
+curl -H "Authorization:Bearer $access_token" https://api.runscope.com/\
+buckets/$key/radar | python -mjson.tool > output3.json
 
 cat output3.json
 

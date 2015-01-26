@@ -1,14 +1,1 @@
-{
-  "auth_token": null,
-  "collections_url": "https://api.runscope.com/buckets/gumshj04hykt/collections",
-  "default": false,
-  "key": "gumshj04hykt",
-  "messages_url": "https://api.runscope.com/buckets/gumshj04hykt/stream",
-  "name": "Testing Services Platform",
-  "team": {
-    "name": "Applause, Inc.",
-    "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
-  },
-  "tests_url": "https://api.runscope.com/buckets/gumshj04hykt/radar",
-  "verify_ssl": true
-}
+null
