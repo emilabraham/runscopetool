@@ -1,1 +1,14 @@
-null
+{
+  "auth_token": null,
+  "collections_url": "https://api.runscope.com/buckets/qe5s8hvez3n4/collections",
+  "default": false,
+  "key": "qe5s8hvez3n4",
+  "messages_url": "https://api.runscope.com/buckets/qe5s8hvez3n4/stream",
+  "name": "MobileAPI APIs",
+  "team": {
+    "name": "Applause, Inc.",
+    "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
+  },
+  "tests_url": "https://api.runscope.com/buckets/qe5s8hvez3n4/radar",
+  "verify_ssl": true
+}

@@ -27,19 +27,35 @@ PS3="Your choice: " #This changes the select prompt
 
 #Create bucket selection menu
 select BUCKET in "${BUCKETS[@]}"; do 
-  case $BUCKET in
-    "Exit")
-      echo "Exiting..."
-      break;;
-    *)
-      SELECTED_BUCKET=$BUCKET
-      break;;
-  esac
+  if [ $REPLY -eq 12 ];
+  then
+    echo "Exiting..."
+    break;
+  elif [ 1 -le $REPLY ] && [ $REPLY -le 11 ];
+  then
+    echo "You selected $BUCKET which is option $REPLY"
+    break;
+  else
+    echo "Incorrect Input: Select a number 1-12"
+  fi
+  #case $REPLY in
+  #  12)
+  #    echo "Exiting..."
+  #    break;;
+  #  (1<=$REPLY && $REPLY<=11))
+  #    echo "You selected $BUCKET"
+  #    break;;
+  #  *)
+  #    echo "Pick a number 1-12";;
+  #esac
 done
 
-
-
-echo "You selected $SELECTED_BUCKET"
 INDEX=$REPLY-1
 
 jq '.data | .['$INDEX']' output.json > output2.json
+
+cat output2.json
+
+KEY=jq '.data | .['$INDEX'] | .key' output.json
+
+echo "The Bucket Key is: $KEY"
