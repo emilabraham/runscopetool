@@ -16,9 +16,17 @@ curl -H "Authorization:Bearer $access_token" https://api.runscope.com/buckets \
 buckets=()
 
 # Fill array with output of jq. jq reads from output.json
-while IFS= read -r entry; do
-  buckets+=("$entry")
-done < <(jq -r '.data | .[].name' output.json)
+fillarray ()
+{
+  declare -a tempArray
+  while IFS= read -r entry; do
+    tempArray+=("$entry")
+  done < <(jq -r '.data | .[].name' $2)
+  # FIX ME Passing arrays by reference is hard
+  eval ${1}=("${tempArray[@]}")
+}
+
+fillarray buckets output.json
 
 # Add exit option to the array
 buckets+=(Exit)
@@ -55,7 +63,7 @@ echo "The bucket Key is: $key"
 
 # Get the list of tests in that bucket
 curl -H "Authorization:Bearer $access_token" https://api.runscope.com/\
-buckets/$key/radar | python -mjson.tool > output3.json
+  buckets/$key/radar | python -mjson.tool > output3.json
 
 cat output3.json
 

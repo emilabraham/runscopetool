@@ -1,9 +1,10 @@
 {
-    "data": {},
-    "error": {
-        "message": "No buckets found"
+    "data": {
+        "bucket_list_url": "https://api.runscope.com/buckets",
+        "current_account_url": "https://api.runscope.com/account"
     },
+    "error": null,
     "meta": {
-        "status": "error"
+        "status": "success"
     }
 }
