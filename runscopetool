@@ -18,20 +18,24 @@ buckets=()
 # Fill array with output of jq. jq reads from output.json
 fillarray ()
 {
-  declare -a tempArray
+  # $2 is current length of the array
+  i=$2
+
+  # Fill it up
   while IFS= read -r entry; do
-    tempArray+=("$entry")
-  done < <(jq -r '.data | .[].name' $2)
-  # FIX ME Passing arrays by reference is hard
-  eval ${1}=("${tempArray[@]}")
+    read ${1}"[$i]" <<< "$entry"
+    ((i++))
+  done < <(jq -r '.data | .[].name' $3)
 }
 
-fillarray buckets output.json
+# fill buckets
+fillarray buckets ${#buckets[@]} output.json
 
 # Add exit option to the array
 buckets+=(Exit)
 
-PS3="Your choice: " #This changes the select prompt
+#This changes the select prompt
+PS3="Choose a bucket: "
 
 # Create bucket selection menu
 select bucket in "${buckets[@]}"; do 
@@ -53,8 +57,6 @@ index=$REPLY-1
 
 jq '.data | .['$index']' output.json > output2.json
 
-cat output2.json
-
 # The Bucket Key of selected Bucket
 # We need this for grabbing all the tests within that bucket
 key=$(jq -r '.data | .['$index'] | .key' output.json)
@@ -62,19 +64,20 @@ key=$(jq -r '.data | .['$index'] | .key' output.json)
 echo "The bucket Key is: $key"
 
 # Get the list of tests in that bucket
-curl -H "Authorization:Bearer $access_token" https://api.runscope.com/\
-  buckets/$key/radar | python -mjson.tool > output3.json
-
-cat output3.json
+curl -H "Authorization:Bearer $access_token"\
+  https://api.runscope.com/buckets/$key/radar |\
+  python -mjson.tool > output3.json
 
 # Declare tests array
 tests=()
 
-# Fill array with output of jq. jq reads from output.json
-while IFS= read -r entry; do
-  tests+=("$entry")
-done < <(jq -r '.data | .[].name' output3.json)
+# fill tests
+fillarray tests ${#tests[@]} output3.json
 
+# Change the prompt
+PS3="Choose a test: "
+
+# Create test selection menu
 select test in "${tests[@]}"; do 
   if [ $REPLY -eq 12 ];
   then
@@ -88,3 +91,6 @@ select test in "${tests[@]}"; do
     echo "Incorrect Input: Select a number 1-12"
   fi
 done
+
+# The index of the selected test
+index=$REPLY-1
