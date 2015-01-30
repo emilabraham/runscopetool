@@ -1,14 +1,1 @@
-{
-  "auth_token": null,
-  "collections_url": "https://api.runscope.com/buckets/lsrlrielwxbt/collections",
-  "default": false,
-  "key": "lsrlrielwxbt",
-  "messages_url": "https://api.runscope.com/buckets/lsrlrielwxbt/stream",
-  "name": "Analytics Prod APIs",
-  "team": {
-    "name": "Applause, Inc.",
-    "uuid": "967002fa-dcb6-4347-bd50-ad1ac91a5fe3"
-  },
-  "tests_url": "https://api.runscope.com/buckets/lsrlrielwxbt/radar",
-  "verify_ssl": true
-}
+null

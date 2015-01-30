@@ -37,20 +37,41 @@ buckets+=(Exit)
 #This changes the select prompt
 PS3="Choose a bucket: "
 
+createmenu ()
+{
+  echo $1
+  echo "Size of array: $2"
+  select option in $1; do
+    if [ $REPLY -eq $2 ];
+    then
+      echo "Exiting..."
+      break;
+    elif [1 -le $REPLY ] && [$REPLY -le $2-1 ];
+    then
+      echo "You selected $option which is option $REPLY"
+      break;
+    else
+      echo "Incorrect Input: Select a number 1-$2"
+    fi
+  done
+}
+
+createmenu "${buckets[@]}" ${#buckets[@]}
+
 # Create bucket selection menu
-select bucket in "${buckets[@]}"; do 
-  if [ $REPLY -eq 12 ];
-  then
-    echo "Exiting..."
-    break;
-  elif [ 1 -le $REPLY ] && [ $REPLY -le 11 ];
-  then
-    echo "You selected $bucket which is option $REPLY"
-    break;
-  else
-    echo "Incorrect Input: Select a number 1-12"
-  fi
-done
+#select bucket in "${buckets[@]}"; do 
+#  if [ $REPLY -eq 12 ];
+#  then
+#    echo "Exiting..."
+#    break;
+#  elif [ 1 -le $REPLY ] && [ $REPLY -le 11 ];
+#  then
+#    echo "You selected $bucket which is option $REPLY"
+#    break;
+#  else
+#    echo "Incorrect Input: Select a number 1-12"
+#  fi
+#done
 
 # The index of the selected bucket
 index=$REPLY-1
