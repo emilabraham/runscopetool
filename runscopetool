@@ -27,8 +27,6 @@ fillarray ()
 createmenu ()
 {
   size=$1
-  echo "Size of array: $size"
-  echo "${@:2}"
   select option in $"${@:2}"; do
     if [ "$REPLY" -eq "$size" ];
     then
@@ -36,7 +34,7 @@ createmenu ()
       break;
     elif [ 1 -le "$REPLY" ] && [ "$REPLY" -le $((size-1)) ];
     then
-      echo "You selected $option which is option $REPLY"
+      echo "You selected $option"
       break;
     else
       echo "Incorrect Input: Select a number 1-$size"
@@ -44,9 +42,15 @@ createmenu ()
   done
 }
 
+echo "Welcome to the Runscope Tool!"
+echo
+echo "This is a tool designed to generate Runscope Trigger URL's."
+echo
+echo "Let's start by selecting a bucket where your tests are located..."
+
 # Retrieve the list of buckets along with their ID's and write to output.json
 # The pipe to python prettifies the output
-curl -H "Authorization:Bearer $access_token" https://api.runscope.com/buckets \
+curl -s -H "Authorization:Bearer $access_token" https://api.runscope.com/buckets \
   | python -mjson.tool > output.json
 
 # Declare a buckets array
@@ -75,7 +79,7 @@ key=$(jq -r '.data | .['$index'] | .key' output.json)
 echo "The bucket Key is: $key"
 
 # Get the list of tests in that bucket
-curl -H "Authorization:Bearer $access_token"\
+curl -s -H "Authorization:Bearer $access_token"\
   https://api.runscope.com/buckets/$key/radar |\
   python -mjson.tool > output3.json
 
