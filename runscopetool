@@ -2,18 +2,13 @@
 # The runscope tool
 # Developed by emilabraham
 
-#Variables
+#### Variables
+
 access_token=053e4c58-1f8c-48d8-8fb9-148a3638c81d
 client_id=a21ebb4a-ee38-48d7-aead-44b2428f7f71
 client_secret=a04102ec-e163-4d34-86ee-dfe5477b2aaf
 
-# Retrieve the list of buckets along with their ID's and write to output.json
-# The pipe to python prettifies the output
-curl -H "Authorization:Bearer $access_token" https://api.runscope.com/buckets \
-  | python -mjson.tool > output.json
-
-# Declare a buckets array
-buckets=()
+#### Functions
 
 # Fill array with output of jq. jq reads from output.json
 fillarray ()
@@ -28,15 +23,7 @@ fillarray ()
   done < <(jq -r '.data | .[].name' $3)
 }
 
-# fill buckets
-fillarray buckets ${#buckets[@]} output.json
-
-# Add exit option to the array
-buckets+=(Exit)
-
-#This changes the select prompt
-PS3="Choose a bucket: "
-
+# Create the menu with the given array
 createmenu ()
 {
   echo $1
@@ -56,7 +43,24 @@ createmenu ()
   done
 }
 
-createmenu "${buckets[@]}" ${#buckets[@]}
+# Retrieve the list of buckets along with their ID's and write to output.json
+# The pipe to python prettifies the output
+curl -H "Authorization:Bearer $access_token" https://api.runscope.com/buckets \
+  | python -mjson.tool > output.json
+
+# Declare a buckets array
+buckets=()
+
+# fill buckets
+fillarray buckets ${#buckets[@]} output.json
+
+# Add exit option to the array
+buckets+=(Exit)
+
+#This changes the select prompt
+PS3="Choose a bucket: "
+
+createmenu ${buckets[*]} ${#buckets[@]}
 
 # Create bucket selection menu
 #select bucket in "${buckets[@]}"; do 
@@ -99,19 +103,19 @@ fillarray tests ${#tests[@]} output3.json
 PS3="Choose a test: "
 
 # Create test selection menu
-select test in "${tests[@]}"; do 
-  if [ $REPLY -eq 12 ];
-  then
-    echo "Exiting..."
-    break;
-  elif [ 1 -le $REPLY ] && [ $REPLY -le 11 ];
-  then
-    echo "You selected $test which is option $REPLY"
-    break;
-  else
-    echo "Incorrect Input: Select a number 1-12"
-  fi
-done
+#select test in "${tests[@]}"; do 
+#  if [ $REPLY -eq 12 ];
+#  then
+#    echo "Exiting..."
+#    break;
+#  elif [ 1 -le $REPLY ] && [ $REPLY -le 11 ];
+#  then
+#    echo "You selected $test which is option $REPLY"
+#    break;
+#  else
+#    echo "Incorrect Input: Select a number 1-12"
+#  fi
+#done
 
 # The index of the selected test
 index=$REPLY-1
