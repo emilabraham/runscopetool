@@ -1,9 +1,118 @@
 {
-    "data": {},
-    "error": {
-        "message": "No buckets found"
-    },
+    "data": [
+        {
+            "assertions_defined": 4,
+            "created_at": 1421958240,
+            "description": "SLA External Test for our Fusion environment",
+            "edited_at": 1421958424,
+            "initial_script": "",
+            "initial_variables": {
+                "RESTAPI": "/platform/services/v4/rest/",
+                "baseURL": "https://my.applause.com",
+                "companyId": "7558",
+                "password": "Test12345",
+                "username": "runscope-pm@applause.com"
+            },
+            "latest_test_result_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/da97a348-b4f8-4740-b4b3-ed3041af00ce/results/latest",
+            "name": "SLA External Test - Fusion",
+            "requests_defined": 4,
+            "schedule_minutes": null,
+            "scripts_defined": 0,
+            "test_results_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/da97a348-b4f8-4740-b4b3-ed3041af00ce/results",
+            "test_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/da97a348-b4f8-4740-b4b3-ed3041af00ce",
+            "trigger_url": "https://api.runscope.com/radar/bf19e3bb-f319-45e9-9fed-52a993bf08ce/trigger",
+            "uuid": "da97a348-b4f8-4740-b4b3-ed3041af00ce",
+            "variables_defined": 1
+        },
+        {
+            "assertions_defined": 4,
+            "created_at": 1421958294,
+            "description": "SLA test for our Staging environment",
+            "edited_at": 1421958435,
+            "initial_script": "",
+            "initial_variables": {
+                "RESTAPI": "/platform/services/v4/rest/",
+                "baseURL": "https://my.applause.com",
+                "companyId": "7558",
+                "password": "Test12345",
+                "username": "runscope-pm@applause.com"
+            },
+            "latest_test_result_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/d2fa04d5-a74b-454a-ac9b-1d6a1927c1ed/results/latest",
+            "name": "SLA External Test - Staging",
+            "requests_defined": 4,
+            "schedule_minutes": null,
+            "scripts_defined": 0,
+            "test_results_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/d2fa04d5-a74b-454a-ac9b-1d6a1927c1ed/results",
+            "test_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/d2fa04d5-a74b-454a-ac9b-1d6a1927c1ed",
+            "trigger_url": "https://api.runscope.com/radar/1425af86-951e-47ee-9d1b-2821ca08788d/trigger",
+            "uuid": "d2fa04d5-a74b-454a-ac9b-1d6a1927c1ed",
+            "variables_defined": 1
+        },
+        {
+            "assertions_defined": 5,
+            "created_at": 1421087726,
+            "description": "Test ability to login/auth with API and grab a bug based on the ID and a Test Cycle based on the ID.",
+            "edited_at": 1421435865,
+            "initial_script": null,
+            "initial_variables": null,
+            "latest_test_result_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/2c1b3ef2-7df0-4c7f-acb1-1be0e436c330/results/latest",
+            "name": "Get Bug and Test Cycle Test",
+            "requests_defined": 5,
+            "schedule_minutes": null,
+            "scripts_defined": 3,
+            "test_results_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/2c1b3ef2-7df0-4c7f-acb1-1be0e436c330/results",
+            "test_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/2c1b3ef2-7df0-4c7f-acb1-1be0e436c330",
+            "trigger_url": "https://api.runscope.com/radar/8bf114b9-5c3f-458b-b939-df89fa8b9f26/trigger",
+            "uuid": "2c1b3ef2-7df0-4c7f-acb1-1be0e436c330",
+            "variables_defined": 1
+        },
+        {
+            "assertions_defined": 13,
+            "created_at": 1421273675,
+            "description": "The auth-service endpoint for fusion environment. This is a series of requests that test the elements of the new SSO flow listed in the documentation.",
+            "edited_at": 1422043587,
+            "initial_script": null,
+            "initial_variables": {
+                "baseURL": "https://fusion-auth.devcloud.applause.com"
+            },
+            "latest_test_result_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/0fb21782-a1b3-4069-82ac-1d4bd6c626ea/results/latest",
+            "name": "SSO Fusion Endpoint",
+            "requests_defined": 13,
+            "schedule_minutes": null,
+            "scripts_defined": 0,
+            "test_results_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/0fb21782-a1b3-4069-82ac-1d4bd6c626ea/results",
+            "test_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/0fb21782-a1b3-4069-82ac-1d4bd6c626ea",
+            "trigger_url": "https://api.runscope.com/radar/ea58a408-20fa-4b8b-a626-3af96330da11/trigger",
+            "uuid": "0fb21782-a1b3-4069-82ac-1d4bd6c626ea",
+            "variables_defined": 2
+        },
+        {
+            "assertions_defined": 4,
+            "created_at": 1421430530,
+            "description": "A test to fulfill our Service-Level Agreement on the Production environment",
+            "edited_at": 1422383884,
+            "initial_script": "",
+            "initial_variables": {
+                "RESTAPI": "/platform/services/v4/rest/",
+                "baseURL": "https://my.applause.com",
+                "companyId": "7558",
+                "password": "Test12345",
+                "username": "runscope-tm@applause.com"
+            },
+            "latest_test_result_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/218e424b-032c-4f0f-abc8-24dffdeb65cc/results/latest",
+            "name": "SLA External Test - Production",
+            "requests_defined": 3,
+            "schedule_minutes": 5,
+            "scripts_defined": 0,
+            "test_results_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/218e424b-032c-4f0f-abc8-24dffdeb65cc/results",
+            "test_url": "https://api.runscope.com/buckets/gumshj04hykt/radar/218e424b-032c-4f0f-abc8-24dffdeb65cc",
+            "trigger_url": "https://api.runscope.com/radar/ac776205-b4a7-49e1-a169-b43e4aa88d2b/trigger",
+            "uuid": "218e424b-032c-4f0f-abc8-24dffdeb65cc",
+            "variables_defined": 1
+        }
+    ],
+    "error": null,
     "meta": {
-        "status": "error"
+        "status": "success"
     }
 }
